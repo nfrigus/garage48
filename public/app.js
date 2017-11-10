@@ -1,21 +1,13 @@
-class WatchBird {
-  constructor() {
-    Object.assign(this, {
-      messages: [],
-    })
-  }
-  addMessage(msg, meta = {}) {
-    this.messages.push({msg, ...meta})
-  }
-  getRisks() {
-    return Math.random()
-  }
-}
-
-
 $(() => {
   const socket = io()
   const wb = new WatchBird()
+  var app = new Vue({
+    el: '#app',
+    data: {
+      messages: [],
+      risk: [],
+    },
+  })
 
   $('form').submit(() => {
     const $m = $('#m')
@@ -25,10 +17,11 @@ $(() => {
 
     return false
   })
+
   socket.on('chat message', msg => {
-    $('#messages').append($('<li>').text(msg))
+    app.messages.push(msg)
     wb.addMessage(msg)
-    $('#risk').html(JSON.stringify(wb.getRisks(), 2, 2))
+    app.risk = JSON.stringify(wb.getRisks(), 2, 2)
 
     window.scrollTo(0, document.body.scrollHeight)
   })

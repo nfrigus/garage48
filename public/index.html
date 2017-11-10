@@ -1,18 +1,21 @@
-<!doctype html>
-<html>
-<head>
-  <link rel="stylesheet" href="main.css">
-  <title>Socket.IO chat</title>
-</head>
-<body>
-<div>Risk <em id="risk"></em></div>
-<ul id="messages"></ul>
-<form action="">
-  <input id="m" autocomplete="off"/>
-  <button>Send</button>
-</form>
+<link rel="stylesheet" href="main.css">
+<title>Socket.IO chat</title>
+
+<div id="app">
+  <div>Risk <em id="risk">{{ risk }}</em></div>
+
+  <ul id="messages">
+    <li v-for="msg in messages">{{ msg }}</li>
+  </ul>
+  <form action="">
+    <input id="m" autocomplete="off"/>
+    <button>Send</button>
+  </form>
+</div>
+
+
+<script src="https://unpkg.com/vue"></script>
 <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
 <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+<script src="watchbird.js"></script>
 <script src="app.js"></script>
-</body>
-</html>
