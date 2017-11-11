@@ -3,6 +3,7 @@ html, body {
     margin: 0;
     padding: 0;
     width: 100%;
+    max-height: 100%;
 }
 
 [v-cloak] {
@@ -39,6 +40,13 @@ html, body {
     color: #000;
 }
 
+.WBMsg-alert {
+    color: red;
+    cursor: pointer;
+    float: left;
+    margin: 0 .5em 0 -1em;
+}
+
 .WBMsg-body { }
 
 .WBMsg-panel {
@@ -57,6 +65,10 @@ html, body {
 .WBMsg-sent {
     text-align: left;
     width: 100%;
+}
+.WBMsg-sent .WBMsg-alert {
+    float: right;
+    margin: 0 -1em 0 .5em;
 }
 
 .WBMsg-sent .WBMsg-balloon {

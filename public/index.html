@@ -16,14 +16,16 @@
     </form>
   </div>
   <div v-if="user">
-    <div>Risk <em>{{ risk }}</em></div>
-
     <div>
       <div v-bind:class="{WBMsg: 1, 'WBMsg-sent': user === msg.sender }" v-for="msg in messages">
         <div class="WBMsg-balloon">
-          <div class="WBMsg-body">{{ msg.msg }}</div>
+          <div class="WBMsg-body">
+            <div class="WBMsg-alert" v-if="msg.warning">
+              <i class="material-icons">warning</i>
+            </div>
+            {{ msg.msg }}
+          </div>
           <div class="WBMsg-panel">
-            <div class="WBMsg-panel-item WBMsg-DangerBtn"></div>
             <div class="WBMsg-panel-item WBMsg-author">{{ msg.sender }}</div>
           </div>
         </div>

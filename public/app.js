@@ -7,7 +7,6 @@ $(() => {
     data: {
       message: "",
       messages: [],
-      risk: [],
       user: null,
     },
     methods: {
@@ -15,10 +14,13 @@ $(() => {
         this.user = (event.target.login.value).toString()
       },
       sendMessage() {
-        socket.emit('chat message', {
+        const msg = {
           msg: this.message,
           sender: this.user,
-        })
+          warning: ~~(Math.random() + .5),
+        }
+        console.log(msg)
+        socket.emit('chat message', msg)
         this.message = ""
       },
     },
@@ -27,8 +29,7 @@ $(() => {
   socket.on('chat message', msg => {
     app.messages.push(msg)
     wb.addMessage(msg)
-    app.risk = JSON.stringify(wb.getRisks(), 2, 2)
 
-    window.scrollTo(0, document.body.scrollHeight)
+    setTimeout(() => window.scrollTo(0, document.body.scrollHeight), 0)
   })
 })
