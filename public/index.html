@@ -47,9 +47,7 @@
           v-bind:data-position="own ? 'right' : 'left'"
           data-delay="50"
           data-html="true"
-          data-tooltip="
-            Beware of this man! <br/>
-            He looks somewhat suspicious.">
+          v-bind:data-tooltip="msg.warning">
           <i class="material-icons">warning</i>
         </div>
         <div v-html="msg.msg"></div>

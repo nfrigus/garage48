@@ -25,7 +25,6 @@ $(() => {
         const msg = {
           msg: this.message,
           sender: this.user,
-          warning: ~~(Math.random() + .3),
         }
         socket.emit('chat message', msg)
         this.message = ""
