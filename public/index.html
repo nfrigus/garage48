@@ -1,16 +1,27 @@
 <link rel="stylesheet" href="main.css">
 <title>Socket.IO chat</title>
 
-<div id="app">
-  <div>Risk <em id="risk">{{ risk }}</em></div>
+<div id="app" v-cloak>
+  <div v-if="!user">
+    <form v-on:submit.prevent="login">
+      <input name="login" placeholder="Enter username">
+      <input type="submit" value="login">
+    </form>
+  </div>
+  <div v-if="user">
+    <div>Risk <em id="risk">{{ risk }}</em></div>
 
-  <ul id="messages">
-    <li v-for="msg in messages">{{ msg }}</li>
-  </ul>
-  <form action="">
-    <input id="m" autocomplete="off"/>
-    <button>Send</button>
-  </form>
+    <ul id="messages">
+      <li v-for="msg in messages">
+        <span>{{ msg.sender }}</span>
+        {{ msg.msg }}
+      </li>
+    </ul>
+    <form v-on:submit.prevent="sendMessage">
+      <input v-model="message" autocomplete="off"/>
+      <button>Send</button>
+    </form>
+  </div>
 </div>
 
 

@@ -1,21 +1,27 @@
 $(() => {
   const socket = io()
   const wb = new WatchBird()
-  var app = new Vue({
+  const app = new Vue({
     el: '#app',
+
     data: {
+      message: "",
       messages: [],
       risk: [],
+      user: null,
     },
-  })
-
-  $('form').submit(() => {
-    const $m = $('#m')
-
-    socket.emit('chat message', $m.val())
-    $m.val('')
-
-    return false
+    methods: {
+      login(event) {
+        this.user = (event.target.login.value).toString()
+      },
+      sendMessage() {
+        socket.emit('chat message', {
+          msg: this.message,
+          sender: this.user,
+        })
+        this.message = ""
+      },
+    },
   })
 
   socket.on('chat message', msg => {

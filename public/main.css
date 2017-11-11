@@ -30,6 +30,10 @@ form button {
     padding: 10px;
 }
 
+[v-cloak] {
+    display: none;
+}
+
 #messages {
     list-style-type: none;
     margin: 0;
