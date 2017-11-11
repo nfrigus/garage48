@@ -15,8 +15,8 @@
       </button>
     </form>
   </div>
-  <div v-if="user">
-    <div>
+  <div v-if="user" class="WBChat">
+    <div class="WBChat-MessageBox">
       <div v-bind:class="{WBMsg: 1, 'WBMsg-sent': user === msg.sender }" v-for="msg in messages">
         <div class="WBMsg-balloon">
           <div class="WBMsg-body">
@@ -32,7 +32,7 @@
       </div>
     </div>
 
-    <form v-on:submit.prevent="sendMessage">
+    <form v-on:submit.prevent="sendMessage" class="WBChat-MsgForm">
       <input v-model="message" autocomplete="off">
       <button
         type="submit"

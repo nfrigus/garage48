@@ -19,7 +19,6 @@ $(() => {
           sender: this.user,
           warning: ~~(Math.random() + .5),
         }
-        console.log(msg)
         socket.emit('chat message', msg)
         this.message = ""
       },
