@@ -52,7 +52,7 @@
             He looks somewhat suspicious.">
           <i class="material-icons">warning</i>
         </div>
-        {{ msg.msg }}
+        <div v-html="msg.msg"></div>
       </div>
       <div class="WBMsg-panel">
         <div class="WBMsg-panel-item WBMsg-author">{{ msg.sender }}</div>
