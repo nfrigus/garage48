@@ -33,7 +33,7 @@
     </div>
 
     <form v-on:submit.prevent="sendMessage" class="WBChat-MsgForm">
-      <input v-model="message" autocomplete="off">
+      <input v-model="message" autocomplete="off" autofocus>
       <button
         type="submit"
         class="btn waves-effect waves-light"
