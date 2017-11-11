@@ -1,57 +1,65 @@
-* {
+html, body {
+    height: 100%;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font: 13px Helvetica, Arial;
-}
-
-form {
-    background: #000;
-    padding: 3px;
-    position: fixed;
-    bottom: 0;
     width: 100%;
-}
-
-form input {
-    border: 0;
-    padding: 10px;
-    width: 90%;
-    margin-right: .5%;
-}
-
-form button {
-    width: 9%;
-    background: rgb(130, 224, 255);
-    border: none;
-    padding: 10px;
 }
 
 [v-cloak] {
     display: none;
 }
 
-#messages {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
+.app {
+    height: 100%;
+    margin: auto;
+    padding: 2em 1em;
+    width: 640px;
 }
 
-#messages li {
-    padding: 5px 10px;
+.btn {
+    background-color: #3949ab;
+    color: #fff;
 }
 
-#messages li:nth-child(odd) {
-    background: #eee;
+.WBMsg {
+    display: block;
+    width: 100%;
+    margin: .3em 0;
+    text-align: right;
+    text-shadow: 0 0 10px RGBA(0, 0, 0, 0.4);
 }
 
-#messages {
-    margin-bottom: 40px
+.WBMsg-balloon {
+    display: inline-block;
+    max-width: 80%;
+    padding: .3em 1.5em;
+    border-radius: 1.2em;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+    background-image: radial-gradient(circle at 100% 100%, #fff, #90caf9);
+    color: #000;
 }
 
-#risk {
-    float: right;
+.WBMsg-body { }
+
+.WBMsg-panel {
+    display: block;
+}
+
+.WBMsg-panel-item {
+    display: inline-block;
+}
+
+.WBMsg-author {
+    font-size: .9em;
+    font-style: italic;
+}
+
+.WBMsg-sent {
+    text-align: left;
+    width: 100%;
+}
+
+.WBMsg-sent .WBMsg-balloon {
+    background-image: linear-gradient(141deg, orange 0%, #fff 75%);
+    background-image: radial-gradient(circle at 0% 100%, #fff, orange);;
 }

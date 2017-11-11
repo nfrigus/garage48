@@ -1,25 +1,43 @@
-<link rel="stylesheet" href="main.css">
-<title>Socket.IO chat</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="/main.css">
+<title>WatchBird</title>
 
-<div id="app" v-cloak>
+<div id="app" class="app" v-cloak>
   <div v-if="!user">
     <form v-on:submit.prevent="login">
       <input name="login" placeholder="Enter username">
-      <input type="submit" value="login">
+      <button
+        type="submit"
+        class="btn waves-effect waves-light"
+        click="waves-effect waves-light btn"
+      >Sign in
+      </button>
     </form>
   </div>
   <div v-if="user">
-    <div>Risk <em id="risk">{{ risk }}</em></div>
+    <div>Risk <em>{{ risk }}</em></div>
 
-    <ul id="messages">
-      <li v-for="msg in messages">
-        <span>{{ msg.sender }}</span>
-        {{ msg.msg }}
-      </li>
-    </ul>
+    <div>
+      <div v-bind:class="{WBMsg: 1, 'WBMsg-sent': user === msg.sender }" v-for="msg in messages">
+        <div class="WBMsg-balloon">
+          <div class="WBMsg-body">{{ msg.msg }}</div>
+          <div class="WBMsg-panel">
+            <div class="WBMsg-panel-item WBMsg-DangerBtn"></div>
+            <div class="WBMsg-panel-item WBMsg-author">{{ msg.sender }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <form v-on:submit.prevent="sendMessage">
-      <input v-model="message" autocomplete="off"/>
-      <button>Send</button>
+      <input v-model="message" autocomplete="off">
+      <button
+        type="submit"
+        class="btn waves-effect waves-light"
+        click="waves-effect waves-light btn"
+      >Send
+      </button>
     </form>
   </div>
 </div>
