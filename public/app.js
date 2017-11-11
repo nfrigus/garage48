@@ -1,4 +1,12 @@
 $(() => {
+  Vue.component('wbmsg', {
+    props: ['msg', 'own'],
+    template: '#WBMsg-component',
+    mounted() {
+      $(this.$el).find('.WBMsg-alert').tooltip({delay: 50})
+    },
+  })
+
   const socket = io()
   const wb = new WatchBird()
   const app = new Vue({
@@ -17,7 +25,7 @@ $(() => {
         const msg = {
           msg: this.message,
           sender: this.user,
-          warning: ~~(Math.random() + .5),
+          warning: ~~(Math.random() + .3),
         }
         socket.emit('chat message', msg)
         this.message = ""

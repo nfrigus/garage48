@@ -81,6 +81,7 @@ html, body {
     text-align: left;
     width: 100%;
 }
+
 .WBMsg-sent .WBMsg-alert {
     float: right;
     margin: 0 -1em 0 .5em;

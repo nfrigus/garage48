@@ -17,19 +17,11 @@
   </div>
   <div v-if="user" class="WBChat">
     <div class="WBChat-MessageBox">
-      <div v-bind:class="{WBMsg: 1, 'WBMsg-sent': user === msg.sender }" v-for="msg in messages">
-        <div class="WBMsg-balloon">
-          <div class="WBMsg-body">
-            <div class="WBMsg-alert" v-if="msg.warning">
-              <i class="material-icons">warning</i>
-            </div>
-            {{ msg.msg }}
-          </div>
-          <div class="WBMsg-panel">
-            <div class="WBMsg-panel-item WBMsg-author">{{ msg.sender }}</div>
-          </div>
-        </div>
-      </div>
+      <WBMsg
+        v-for="msg in messages"
+        v-bind:msg="msg"
+        v-bind:own="user === msg.sender"
+      ></WBMsg>
     </div>
 
     <form v-on:submit.prevent="sendMessage" class="WBChat-MsgForm">
@@ -45,8 +37,33 @@
 </div>
 
 
+<template id="WBMsg-component">
+  <div v-bind:class="{WBMsg: 1, 'WBMsg-sent': own }">
+    <div class="WBMsg-balloon">
+      <div class="WBMsg-body">
+        <div
+          class="WBMsg-alert"
+          v-if="msg.warning"
+          v-bind:data-position="own ? 'right' : 'left'"
+          data-delay="50"
+          data-html="true"
+          data-tooltip="
+            Beware of this man! <br/>
+            He looks somewhat suspicious.">
+          <i class="material-icons">warning</i>
+        </div>
+        {{ msg.msg }}
+      </div>
+      <div class="WBMsg-panel">
+        <div class="WBMsg-panel-item WBMsg-author">{{ msg.sender }}</div>
+      </div>
+    </div>
+  </div>
+</template>
+
 <script src="https://unpkg.com/vue"></script>
-<script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
 <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+<script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
 <script src="watchbird.js"></script>
 <script src="app.js"></script>
