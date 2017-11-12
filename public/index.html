@@ -3,8 +3,8 @@
 <link rel="stylesheet" href="/main.css">
 <title>WatchBird</title>
 
-<div id="app" class="app" v-cloak>
-  <div v-if="!user">
+<div id="app" class="app" v-cloak style="position: relative">
+  <div v-if="!user" style="padding-top: 160px">
     <form v-on:submit.prevent="login">
       <input name="login" placeholder="Enter username">
       <button
@@ -15,7 +15,7 @@
       </button>
     </form>
   </div>
-  <div v-if="user" class="WBChat">
+  <div v-if="user" class="WBChat" style="padding-top: 160px">
     <div class="WBChat-MessageBox">
       <WBMsg
         v-for="msg in messages"
@@ -29,6 +29,14 @@
     </form>
   </div>
 </div>
+
+<img src="/logo.png" style="
+  left: 50%;
+  margin-left: -87px;
+  position: fixed;
+  top: 0;
+  width: 167px; height: 160px;
+">
 
 
 <template id="WBMsg-component">
