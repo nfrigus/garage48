@@ -14,16 +14,14 @@ io.on('connection', socket => {
 
 app.use(express.static(__dirname + "/public"))
 
-http.listen(port, () => {
-  console.log('listening on *:' + port)
-})
+http.listen(port, () => console.log('listening on *:' + port))
 
 
 async function getRiskWarning(msg) {
   const contexts = [{
     triggers: [],
     warning: "Your personal data is at risk!<br><br>" +
-      "Sharing your",
+    "Sharing your",
   }]
 
 
@@ -34,7 +32,7 @@ async function getRiskWarning(msg) {
     'your photo',
   ]
   const warn = "Beware of this man! <br/>He looks somewhat suspicious."
-  return ~~(Math.random() + .3) ? undefined : warn
+  return !~~(Math.random() + .1) ? undefined : warn
 }
 
 
