@@ -94,3 +94,8 @@ html, body {
     background-color: #3673a2;
     border-radius: .7em .7em .7em 0;
 }
+
+.material-tooltip {
+    max-width: 420px;
+    text-align: left;
+}
